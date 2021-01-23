@@ -1,5 +1,6 @@
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const path = require("path");
+const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
 module.exports = {
   entry: "./src/bootstrap.js",
@@ -18,6 +19,20 @@ module.exports = {
         },
       },
       {
+        test: /\.(ts|js)x?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: [
+              "@babel/preset-env",
+              "@babel/preset-react",
+              "@babel/preset-typescript",
+            ],
+          },
+        },
+      },
+      {
         test: /\.html$/,
         use: [
           {
@@ -31,5 +46,13 @@ module.exports = {
       },
     ],
   },
-  plugins: [new CopyWebpackPlugin(["index.html"])],
+  plugins: [
+    new CopyWebpackPlugin(["index.html"]),
+    new ForkTsCheckerWebpackPlugin({
+      async: false,
+      eslint: {
+        files: "./src/**/*",
+      },
+    }),
+  ],
 };
