@@ -11,10 +11,10 @@ pub enum Status { Empty, Visited, Mine, Marked }
 #[global_allocator]
 static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 
-// #[wasm_bindgen]
-// extern {
-//     fn alert(s: &str);
-// }
+#[wasm_bindgen]
+extern {
+    fn alert(s: &str);
+}
 
 
 pub fn get_new_line(line_size: usize) -> Array {
