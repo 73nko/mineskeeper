@@ -12,7 +12,7 @@ h1 {
   width: min-content;
 }
 
-#app {
+.app {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,22 +27,4 @@ main {
   background-color: lightblue;
   display: flex;
   flex-direction: column;
-}
-.line {
-  width: 100%;
-  height: 100%;
-  display: flex;
-}
-.box {
-  width: 100%;
-  border: 1px solid gainsboro;
-}
-
-.box.not-visited {
-  background-color: lemonchiffon;
-  transition: background-color 100ms;
-}
-
-.box.not-visited:hover {
-  background-color: lightsteelblue;
 }

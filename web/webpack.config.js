@@ -1,23 +1,17 @@
-const CopyWebpackPlugin = require("copy-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
 module.exports = {
-  entry: "./src/bootstrap.js",
+  entry: "./src/index.tsx",
   output: {
+    filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
-    filename: "bootstrap.js",
   },
   mode: "development",
+  devtool: "inline-source-map",
   module: {
     rules: [
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-        },
-      },
       {
         test: /\.(ts|js)x?$/,
         exclude: /node_modules/,
@@ -46,8 +40,13 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    extensions: [".tsx", ".ts", ".js"],
+  },
   plugins: [
-    new CopyWebpackPlugin(["index.html"]),
+    new HtmlWebpackPlugin({
+      template: "./index.html",
+    }),
     new ForkTsCheckerWebpackPlugin({
       async: false,
       eslint: {
