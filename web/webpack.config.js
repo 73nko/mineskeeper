@@ -3,7 +3,7 @@ const path = require("path");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
 module.exports = {
-  entry: "./src/index.tsx",
+  entry: "./bootstrap.js",
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),

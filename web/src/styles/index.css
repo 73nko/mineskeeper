@@ -7,12 +7,15 @@ header {
   padding: 1rem;
   position: relative;
 }
-h1 {
-  margin: 0 auto;
-  width: min-content;
+
+header {
+  width: 100%;
+  margin: 0;
+  padding: 1rem;
+  position: relative;
 }
 
-.app {
+#root {
   display: flex;
   justify-content: center;
   align-items: center;
