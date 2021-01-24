@@ -18,8 +18,9 @@ import BoardLine from "./components/BoardLine";
 // }
 
 const App: React.FC<{}> = () => {
-  const board = wasm.create_board(50);
+  const board = wasm.create_board(10);
 
+  console.log({board})
   return (
     <div className="app">
       <header>
